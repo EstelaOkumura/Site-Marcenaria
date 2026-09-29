@@ -1,0 +1,390 @@
+@import "tailwindcss";
+@theme {
+  --color-forest-900: rgb(var(--forest-900));
+  --color-forest-800: rgb(var(--forest-800));
+  --color-forest-700: rgb(var(--forest-700));
+  --color-forest-600: rgb(var(--forest-600));
+  --color-ivory: rgb(var(--ivory));
+  --color-sand: rgb(var(--sand));
+  --color-greige: rgb(var(--greige));
+  --color-walnut: rgb(var(--walnut));
+  --color-caramel: rgb(var(--caramel));
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+}
+/* ==========================================================
+   1. TOKENS (paleta tirada do logotipo e das fotos)
+   O site é escuro por decisão da marcenaria e não muda com o tema do navegador.
+   ========================================================== */
+:root{
+  --forest-900: 20 25 18;    /* verde-floresta mais fundo */
+  --forest-800: 28 34 25;    /* verde do logotipo (base) */
+  --forest-700: 37 45 33;
+  --forest-600: 50 59 45;
+  --ivory: 243 238 228;      /* texto */
+  --sand: 201 185 154;       /* areia do tronco no logotipo */
+  --greige: 168 154 136;
+  --walnut: 107 58 34;       /* nogueira dos bancos */
+  --caramel: 165 96 47; 
+  --tex-wood: url("../images/t.amadeirado.png");
+  --tex-stone: url("../images/t.ripado.png");
+  --tex-travertine: url("../images/t.linho.png");
+  --tex-leather: url("../images/t.mdf.png");
+
+  color-scheme: dark;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*,*::before,*::after{ box-sizing: inherit; }
+html{ scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+section[id]{ scroll-margin-top: 5.25rem; }
+body{
+  background: rgb(var(--forest-800));
+  color: rgb(var(--ivory));
+  font-family: Montserrat, system-ui, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+/* Textura de grão bem sutil, para o verde não ficar chapado */
+body::after{
+  content:""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
+  background-image: var(--grain); opacity: .045;
+}
+::selection{ background: rgb(var(--sand)); color: rgb(var(--forest-900)); }
+:focus-visible{ outline: 2px solid rgb(var(--sand)); outline-offset: 3px; }
+img{ display:block; max-width:100%; }
+
+/* ==========================================================
+   2. TIPOGRAFIA E BOTÕES
+   ========================================================== */
+.wrap{ width:100%; max-width:1360px; margin-inline:auto; padding-inline: clamp(1.5rem, 4vw, 3rem); }
+.display{ text-wrap: balance; font-family: Fraunces, Georgia, serif; font-weight: 300; line-height: 1.04; letter-spacing: -.015em; font-optical-sizing: auto; }
+.t-hero{ font-size: clamp(2.7rem, 7.4vw, 6.9rem); line-height: .98; letter-spacing: -.025em; }
+.t-h2{ font-size: clamp(2.2rem, 4.6vw, 4.4rem); }
+.t-lead{ font-size: clamp(1.65rem, 3.1vw, 2.95rem); line-height: 1.22; }
+.body-copy{ font-size: 1rem; line-height: 1.75; color: rgb(var(--ivory) / .72); max-width: 38rem; }
+.wordmark{ font-size: .75rem; letter-spacing: .34em; text-transform: uppercase; font-weight: 400; }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+  padding: .95rem 1.7rem; border-radius: 999px; font-size: .875rem; font-weight: 500; letter-spacing: .02em;
+  border: 1px solid transparent; cursor: pointer;
+  transition: background-color .35s, color .35s, border-color .35s;
+}
+.btn-solid{ background: rgb(var(--ivory)); color: rgb(var(--forest-900)); }
+.btn-solid:hover{ background: rgb(var(--sand)); }
+.btn-line{ border-color: rgb(var(--sand) / .5); color: rgb(var(--ivory)); }
+.btn-line:hover{ border-color: rgb(var(--ivory)); background: rgb(var(--ivory) / .08); }
+.btn-dark{ background: rgb(var(--forest-800)); color: rgb(var(--ivory)); }
+.btn-dark:hover{ background: rgb(var(--forest-600)); }
+
+/* ==========================================================
+   3. NAVEGAÇÃO E MENU (abre em círculo, como o logotipo)
+   ========================================================== */
+.nav{
+  padding-top: env(safe-area-inset-top, 0px);
+  border-bottom: 1px solid transparent;
+  transition: background-color .4s, border-color .4s;
+}
+.nav.scrolled{
+  background: rgb(var(--forest-900) / .8);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-bottom-color: rgb(var(--sand) / .14);
+}
+.menu{
+  position: fixed; inset: 0; z-index: 60; overflow-y: auto;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: rgb(var(--forest-900));
+  clip-path: circle(0% at calc(100% - 3.4rem) 2.9rem);
+  visibility: hidden;
+  transition: clip-path .9s cubic-bezier(.7,0,.2,1), visibility 0s linear .9s;
+}
+.menu.open{
+  clip-path: circle(150% at calc(100% - 3.4rem) 2.9rem);
+  visibility: visible;
+  transition: clip-path .9s cubic-bezier(.7,0,.2,1), visibility 0s;
+}
+.menu-link{
+  display: block; width: fit-content; padding: .15em 0;
+  font-size: clamp(2.4rem, 7vw, 5.6rem);
+  color: rgb(var(--ivory) / .9);
+  opacity: 0; transform: translateY(1.2rem);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.1,1), color .3s;
+}
+.menu.open .menu-link{ opacity: 1; transform: none; transition-delay: calc(.35s + var(--i) * .07s), calc(.35s + var(--i) * .07s), 0s; }
+.menu-link:hover{ color: rgb(var(--sand)); }
+.menu-meta{ opacity: 0; transition: opacity .6s ease; }
+.menu.open .menu-meta{ opacity: 1; transition-delay: .9s; }
+
+/* ==========================================================
+   4. HERO: a única sequência animada da página
+   Os anéis se desenham e o título sobe, juntos, uma vez.
+   ========================================================== */
+.hero{ position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; background: rgb(var(--forest-900)); }
+.hero-photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: 50% 62%; }
+.hero-shade{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(0deg, rgb(var(--forest-900) / .94) 0%, rgb(var(--forest-900) / .6) 36%, rgb(var(--forest-900) / .22) 100%),
+    linear-gradient(90deg, rgb(var(--forest-900) / .55) 0%, transparent 62%),
+    rgb(var(--forest-800) / .18);
+}
+.hero-rings{
+  position:absolute; right:-14vw; top: 4%; width: min(118vh, 980px); max-width:none; aspect-ratio:1; pointer-events:none;
+}
+.hero-rings .ring{
+  fill:none; stroke: rgb(var(--sand)); stroke-width: .9;
+  stroke-dasharray: 1 1; stroke-dashoffset: 1;
+  animation: draw 3.4s cubic-bezier(.45,0,.15,1) forwards;
+  animation-delay: calc(.2s + var(--i) * .1s);
+}
+@media (max-width: 767px){
+  .hero-rings{ width: 160vw; right: -70vw; top: 8%; }
+}
+@keyframes draw{ to{ stroke-dashoffset: 0; } }
+.hero-line{ display:block; overflow:hidden; padding-bottom:.1em; margin-bottom:-.1em; }
+.hero-line > span{ display:block; text-wrap: balance; transform: translateY(105%); animation: rise 1.15s cubic-bezier(.2,.7,.1,1) forwards; animation-delay: calc(.5s + var(--i) * .15s); }
+@keyframes rise{ to{ transform:none; } }
+.hero-fade{ opacity:0; animation: fade 1s ease 1.4s forwards; }
+@keyframes fade{ to{ opacity:1; } }
+
+/* ==========================================================
+   5. PROJETOS
+   ========================================================== */
+.chip{
+  padding: .65rem 1.15rem; border: 1px solid rgb(var(--sand) / .35); border-radius: 999px;
+  font-size: .875rem; font-weight: 400; color: inherit; background: transparent; cursor: pointer;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.chip:hover{ border-color: rgb(var(--sand)); }
+.chip[aria-pressed="true"]{ background: rgb(var(--ivory)); color: rgb(var(--forest-900)); border-color: rgb(var(--ivory)); }
+.p-open{ display:block; width:100%; text-align:left; cursor: zoom-in; }
+.p-frame{ position:relative; overflow:hidden; background: rgb(var(--forest-700)); }
+.p-frame img{ width:100%; height:100%; object-fit:cover; }
+.p-title{ transition: color .3s; }
+.p-open:hover .p-title{ color: rgb(var(--sand)); }
+
+.lb{
+  position: fixed; inset: 0; z-index: 70; overflow-y: auto;
+  background: rgb(var(--forest-900));
+  padding: calc(env(safe-area-inset-top, 0px) + 1.25rem) 1.25rem calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
+  opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s;
+}
+.lb.open{ opacity: 1; visibility: visible; transition: opacity .35s ease, visibility 0s; }
+.lb-inner{ min-height: 100%; display:grid; grid-template-columns: minmax(0,1fr) 21rem; gap: 2.5rem; align-items:center; max-width: 1360px; margin-inline:auto; padding: 3.5rem 0 1rem; }
+.lb-img{ width:100%; max-height: 80svh; object-fit: contain; }
+.lb-btn{
+  display:inline-grid; place-items:center; width:2.75rem; height:2.75rem; border-radius:999px;
+  border:1px solid rgb(var(--sand) / .4); color: rgb(var(--ivory)); background: transparent; cursor:pointer;
+  transition: background-color .3s, border-color .3s;
+}
+.lb-close{ position: fixed; right: 1.25rem; top: calc(env(safe-area-inset-top, 0px) + 1.25rem); z-index: 2; }
+.lb-btn:hover{ background: rgb(var(--ivory) / .1); border-color: rgb(var(--ivory)); }
+@media (max-width: 860px){
+  .lb-inner{ grid-template-columns: 1fr; gap: 1.5rem; align-items:start; }
+  .lb-img{ max-height: 56svh; }
+}
+
+/* ==========================================================
+   6. NOSSA HISTÓRIA: partes com seta lateral / já substituída
+   ========================================================== */
+.story-photo{
+  background-color: rgb(var(--forest-700));
+  background-size: cover; background-position: center;
+}
+.lb-btn:disabled{ opacity: .3; cursor: default; }
+.lb-btn:disabled:hover{ background: transparent; border-color: rgb(var(--sand) / .4); }
+
+/* ==========================================================
+   7. HISTÓRIA: um anel por ano, desenhado pela rolagem
+   ========================================================== */
+.hist{ position: relative; height: 330vh; background: rgb(var(--sand)); color:rgb(var(--forest-800)); }
+.hist-stick{
+  position: sticky; top: 0; height: 100svh; overflow: hidden;
+  display:flex; align-items:center;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+#histRings .ring{ fill:none; stroke: rgb(var(--forest-800)); stroke-width:.9; stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+.ring-label{ font-family: Montserrat, sans-serif; font-size: 11.5px; letter-spacing: .06em; fill: rgb(var(--forest-800)); opacity: 0; transition: opacity .4s; }
+.ring-tick{ stroke: rgb(var(--forest-800) / .5); stroke-width: 1; }
+
+/* ==========================================================
+   8. PROCESSO (fundo areia, tom do tronco do logotipo)
+   ========================================================== */
+.step-line{ border-top: 1px solid rgb(var(--forest-800) / .35); }
+
+/* ==========================================================
+   9. ORÇAMENTO
+   ========================================================== */
+.fab-stack{
+  position: fixed; right: 1.25rem; bottom: calc(env(safe-area-inset-bottom, 0px) + 1.25rem); z-index: 45;
+  display: flex; flex-direction: column; gap: .75rem;
+}
+.fab{
+  display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 999px;
+  background: rgb(var(--sand)); color: rgb(var(--forest-900)); box-shadow: 0 6px 24px rgb(0 0 0 / .35);
+  transition: background-color .3s;
+}
+.fab:hover{ background: rgb(var(--ivory)); }
+
+/* ==========================================================
+   10. TEXTURAS (geradas no build) E MOVIMENTO REDUZIDO
+   ========================================================== */
+:root{--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  .hero-rings .ring{ animation: none; stroke-dashoffset: 0; }
+  .hero-line > span{ animation: none; transform: none; }
+  .hero-fade{ animation: none; opacity: 1; }
+  .menu,.menu.open,.lb,.lb.open{ transition-duration: .01s !important; transition-delay: 0s !important; 
+  }
+}
+
+/* ==========================================================
+   MATERIAIS
+   ========================================================== */
+
+.mats{
+  display:flex;
+  gap:6px;
+  height:clamp(420px, 62vh, 600px);
+}
+
+.mat{
+  position:relative;
+  flex:1 1 0;
+  min-width:0;
+  overflow:hidden;
+  cursor:pointer;
+  background:var(--base);
+  color:rgb(var(--fg));
+  transition:flex-grow .9s cubic-bezier(.7,0,.2,1);
+}
+
+.mat.active{
+  flex-grow:3.6;
+}
+
+.mat-tex{
+  position:absolute;
+  inset:0;
+  background-image:var(--tex);
+  background-size:600px 600px;
+}
+
+.mat-shade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,var(--shade),transparent 60%);
+}
+
+.mat-title-v{
+  position:absolute;
+  left:1.4rem;
+  bottom:1.5rem;
+  white-space:nowrap;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-size:1.55rem;
+  transition:opacity .35s;
+}
+
+.mat.active .mat-title-v{
+  opacity:0;
+}
+
+.mat-body{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:min(26rem,82vw);
+  padding:2rem;
+  opacity:0;
+  transform:translateY(14px);
+  pointer-events:none;
+  transition:opacity .4s,transform .4s;
+}
+
+.mat.active .mat-body{
+  opacity:1;
+  transform:none;
+  transition:opacity .6s .4s,transform .6s .4s;
+}
+
+@media (max-width:767px){
+  .mats{
+    flex-direction:column;
+    height:auto;
+  }
+
+  .mat{
+    flex:none;
+    height:76px;
+    transition:height .7s cubic-bezier(.7,0,.2,1);
+  }
+
+  .mat.active{
+    height:330px;
+  }
+
+  .mat-title-v{
+    writing-mode:horizontal-tb;
+    transform:none;
+    left:1.25rem;
+    top:1.35rem;
+    bottom:auto;
+  }
+
+  .mat-body{
+    padding:1.25rem;
+  }
+}
+
+  /* Galeria de projetos em duas colunas */
+
+.projects-masonry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 2rem;
+  align-items: start;
+
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.projects-masonry-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projects-masonry .p-card {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .projects-masonry {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-masonry-column {
+    gap: 1.5rem;
+  }
+}
+  
+@media (max-width: 767px) {
+  .projects-masonry-column .p-card:nth-child(2) .mt-4 {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .projects-masonry-column .p-card:nth-child(2) .mt-4 {
+    margin-bottom: 1rem;
+  }
+}
+

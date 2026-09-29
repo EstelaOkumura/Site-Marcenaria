@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marcenaria Eise · Desde 1982 fabricando sonhos sob medida</title>
+<meta name="description" content="Marcenaria planejada em madeira de demolição, pedra e couro. Desde 1982 fabricando sonhos sob medida.">
+<meta name="color-scheme" content="dark">
+
+<!-- Fontes: Fraunces (títulos) + Montserrat (a mesma família do slogan do logotipo) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Tailwind (Play CDN) com as cores da marca lidas das variáveis CSS abaixo -->
+
+
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="bg-forest-800 text-ivory antialiased">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.35" cy="6.65" r=".55" fill="currentColor" stroke="none"/></g></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol></svg>
+
+<a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ivory focus:px-4 focus:py-2 focus:text-forest-900">Pular para o conteúdo</a>
+
+<!-- ============ NAVEGAÇÃO ============ -->
+<header id="nav" class="nav fixed inset-x-0 top-0 z-50">
+  <div class="wrap flex items-center justify-between py-4">
+    <a href="#top" class="flex items-center gap-3" aria-label="Marcenaria Eise, início">
+      <img data-img="logo" alt="" width="40" height="40" class="h-10 w-10 rounded-full">
+      <span class="wordmark hidden sm:inline">Marcenaria Eise</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="#orcamento" class="btn btn-line !py-2.5 hidden md:inline-flex">Solicitar orçamento</a>
+      <button id="menuBtn" type="button" class="btn btn-line !py-2.5" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MENU ============ -->
+<div id="menu" class="menu" aria-hidden="true" inert>
+  <div class="wrap flex min-h-full flex-col">
+    <div class="flex items-center justify-between py-4">
+      <a href="#top" data-close class="flex items-center gap-3" aria-label="Marcenaria Eise, início">
+        <img data-img="logo" alt="" width="40" height="40" class="h-10 w-10 rounded-full">
+        <span class="wordmark hidden sm:inline">Marcenaria Eise</span>
+      </a>
+      <button id="menuClose" type="button" class="btn btn-line !py-2.5">Fechar</button>
+    </div>
+    <div class="flex flex-1 items-center justify-between gap-10 py-10">
+    <nav class="flex flex-col justify-center" aria-label="Principal">
+      <a href="#top"       data-close class="menu-link display" style="--i:0">Início</a>
+      <a href="#projetos"  data-close class="menu-link display" style="--i:1">Projetos</a>
+      <a href="#processo"  data-close class="menu-link display" style="--i:2">Como trabalhamos</a>
+      <a href="#orcamento" data-close class="menu-link display" style="--i:3">Entrar em contato</a>
+      <a href="#materiais" data-close class="menu-link display" style="--i:4">Conheça o material</a>
+      <a href="#historia"  data-close class="menu-link display" style="--i:5">Anéis da árvore</a>
+    </nav>
+    <div class="menu-meta hidden h-[min(46vh,420px)] w-[min(46vh,420px)] overflow-hidden rounded-full md:flex items-center justify-center">
+  <img
+    data-img="logo"
+    alt="Logo da Marcenaria Eise"
+    class="h-full w-full object-contain scale-[1.28]"
+  >
+</div>
+    </div>
+    <div class="menu-meta flex flex-wrap items-end justify-between gap-4 pb-8 text-sm text-ivory/60">
+      <p>Desde 1982 fabricando sonhos sob medida.</p>
+      <a data-wa href="#" target="_blank" rel="noopener" class="hover:text-ivory">WhatsApp: +55 (11) 94769-0687</a>
+    </div>
+  </div>
+</div>
+
+<main id="conteudo">
+
+<!-- ============ HERO ============ -->
+
+<section class="hero">
+
+
+  <div class="hero-shade"></div>
+  <svg id="heroRings" class="hero-rings" viewBox="0 0 800 800" aria-hidden="true" focusable="false"></svg>
+
+  <div class="wrap relative z-10 pb-14 pt-40 md:pb-32">
+    <h1 class="display t-hero max-w-[15ch] md:max-w-none">
+      <span class="hero-line" style="--i:0"><span>Fabricando sonhos</span></span>
+      <span class="hero-line" style="--i:1"><span>sob medida desde 1982</span></span>
+    </h1>
+
+    <div class="hero-fade mt-8 flex flex-col gap-8 md:mt-12 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-md">
+      <p class="body-copy !text-ivory/80">
+  <strong class="font-semibold">Marcenaria sob medida</strong>, feita para durar.
+</p>
+
+<p class="body-copy !text-ivory/80">
+  Projetos personalizados para transformar seu espaço.
+</p>
+
+<p class="body-copy !text-ivory/80">
+  <strong class="font-semibold">Atendimento em todo São Paulo.</strong>
+</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#projetos" class="btn btn-solid">Ver projetos</a>
+          <a href="#orcamento" class="btn btn-line">Solicitar orçamento</a>
+        </div>
+      </div>
+      <p class="hidden max-w-[16rem] text-xs leading-relaxed text-ivory/55 md:block"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="py-28 md:py-44" aria-label="Manifesto">
+  <div class="wrap grid items-center gap-12 md:grid-cols-12">
+    <div class="md:col-span-3">
+      <img data-img="logo" alt="Logotipo da Marcenaria Eise: monograma ME sobre um tronco cortado" width="200" height="200" class="h-40 w-40 rounded-full md:h-52 md:w-52">
+    </div>
+    <p class="display t-lead max-w-[26ch] md:col-span-9 md:max-w-[36ch]">
+      Cada peça começa em uma madeira que já tem história. Desenhamos, cortamos e ajustamos até o móvel parecer ter estado ali desde sempre.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PROJETOS ============ -->
+<section id="projetos" class="pb-28 md:pb-44" aria-labelledby="projetos-t">
+
+  <div class="wrap projects-wrap">
+
+    <div class="mb-14 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
+
+      <div>
+        <h2 id="projetos-t" class="display t-h2 max-w-[14ch]">
+          Ambientes feitos peça por peça
+        </h2>
+
+        <p class="body-copy mt-5">
+          Confira alguns dos nossos projetos feitos sob medida!
+          <br>
+          <strong class="font-semibold">Toque</strong> em uma foto para <strong class="font-semibold">ampliá-la</strong>.
+        </p>
+      </div>
+
+      <div
+        class="flex flex-wrap gap-2"
+        role="group"
+        aria-label="Filtrar projetos por ambiente"
+      >
+        <button class="chip" data-filter="all" aria-pressed="true">
+          Todos
+        </button>
+
+        <button class="chip" data-filter="Sala" aria-pressed="false">
+          Sala
+        </button>
+
+        <button class="chip" data-filter="Cozinha" aria-pressed="false">
+          Cozinha
+        </button>
+
+        <button class="chip" data-filter="Sala de estar" aria-pressed="false">
+          Sala de estar
+        </button>
+
+        <button class="chip" data-filter="Quarto" aria-pressed="false">
+          Quarto
+        </button>
+
+        <button class="chip" data-filter="Banheiro" aria-pressed="false">
+          Banheiro
+        </button>
+
+        <button class="chip" data-filter="Lavanderia" aria-pressed="false">
+          Lavanderia
+        </button>
+
+        <button class="chip" data-filter="Área externa" aria-pressed="false">
+          Área externa
+        </button>
+      </div>
+
+    </div>
+
+    <!-- As fotos, títulos e descrições de cada projeto ficam em PROJECTS, dentro de data.js.
+         O JS monta os cartões aqui a partir dessa lista. -->
+
+    <div id="grid" class="projects-masonry"></div>
+
+    <div class="mt-16 flex flex-wrap items-center gap-4 md:mt-20">
+      <button id="projMore" type="button" class="btn btn-line">
+        Ver mais projetos
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    <button id="projTop" type="button" class="btn btn-line" hidden>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+      Voltar ao topo
+    </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESSO ============ -->
+<section id="processo" class="bg-sand py-28 text-forest-800 md:py-40" aria-labelledby="processo-t">
+  <div class="wrap">
+    <h2 id="processo-t" class="display t-h2 max-w-[20ch]">Do croqui à entrega</h2>
+
+    <ol class="mt-16 grid gap-12 md:mt-24 md:grid-cols-4 md:gap-8">
+      <li class="step-line pt-6">
+        <span class="display block text-7xl text-walnut md:text-8xl">1</span>
+        <h3 class="display mt-6 text-2xl">Conversa e medição</h3>
+        <p class="mt-3 text-[.95rem] leading-relaxed text-forest-800/90 font-normal">Visitamos o espaço, ouvimos suas necessidades e medimos cada canto.</p>
+      </li>
+      <li class="step-line pt-6">
+        <span class="display block text-7xl text-walnut md:text-8xl">2</span>
+        <h3 class="display mt-6 text-2xl">Projeto</h3>
+        <p class="mt-3 text-[.95rem] leading-relaxed text-forest-800/90 font-normal">Desenhamos o rascunho do móvel e escolhemos juntos os materiais e acabamentos.</p>
+      </li>
+      <li class="step-line pt-6">
+        <span class="display block text-7xl text-walnut md:text-8xl">3</span>
+        <h3 class="display mt-6 text-2xl">Produção</h3>
+        <p class="mt-3 text-[.95rem] leading-relaxed text-forest-800/90 font-normal">As peças são cortadas, montadas e acabadas na oficina.</p>
+      </li>
+      <li class="step-line pt-6">
+        <span class="display block text-7xl text-walnut md:text-8xl">4</span>
+        <h3 class="display mt-6 text-2xl">Instalação</h3>
+        <p class="mt-3 text-[.95rem] leading-relaxed text-forest-800/90 font-normal">Levamos tudo pronto, ajustamos no local e entregamos o ambiente montado.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ENTRAR EM CONTATO ============ -->
+<section id="orcamento" class="py-28 md:py-44" aria-labelledby="orcamento-t">
+  <div class="wrap grid gap-10 md:grid-cols-12 md:items-center md:gap-10">
+    <div class="md:col-span-7">
+      <h2 id="orcamento-t" class="display t-h2 max-w-[16ch]"><strong>Vamos conversar sobre o seu projeto?</strong></h2>
+      <p class="body-copy mt-6">Atendimento em todo São Paulo.</p>
+      <p class="body-copy mt-6">Fale direto com a marcenaria pelo WhatsApp, ou veja mais trabalhos no Instagram.</p>
+    </div>
+
+    <div class="flex flex-wrap gap-3 md:col-span-5 md:justify-end">
+      <a data-wa href="#" target="_blank" rel="noopener" class="btn btn-solid">
+        <svg class="h-5 w-5" aria-hidden="true"><use href="#i-wa"/></svg>
+        Chamar no WhatsApp
+      </a>
+      <a data-ig href="#" target="_blank" rel="noopener" class="btn btn-line">
+        <svg class="h-5 w-5" aria-hidden="true"><use href="#i-ig"/></svg>
+        Ver no Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATERIAIS ============ -->
+<section id="materiais" class="bg-forest-900 py-28 md:py-40" aria-labelledby="materiais-t">
+  <div class="wrap">
+    <div class="mb-10 flex flex-col gap-5 md:mb-14 md:flex-row md:items-end md:justify-between">
+      <h2 id="materiais-t" class="display t-h2 max-w-[18ch]">Cada material traz uma personalidade ao ambiente</h2>
+      <p class="body-copy md:max-w-[19rem] md:pb-2">Passe o mouse ou toque em um material para conhecê-lo.</p>
+    </div>
+
+    <div class="mats" id="mats">
+      <article class="mat" tabindex="0" style="--base:#6B3A22; --tex:var(--tex-wood); --fg:243 238 228; --shade:rgb(20 25 18 / .6)">
+        <div class="mat-tex"></div><div class="mat-shade"></div>
+        <h3 class="mat-title-v display">Amadeirado</h3>
+        <div class="mat-body">
+          <h3 class="display text-3xl">Amadeirado</h3>
+          <p class="mt-3 text-[.95rem] leading-relaxed opacity-85"></p>
+        </div>
+      </article>
+
+      <article class="mat" tabindex="0" style="--base:#8f857a; --tex:var(--tex-stone); --fg:243 238 228; --shade:rgb(20 25 18 / .62)">
+        <div class="mat-tex"></div><div class="mat-shade"></div>
+        <h3 class="mat-title-v display">Ripado</h3>
+        <div class="mat-body">
+          <h3 class="display text-3xl">Ripado</h3>
+          <p class="mt-3 text-[.95rem] leading-relaxed opacity-90"></p>
+        </div>
+      </article>
+
+      <article class="mat" tabindex="0" style="--base:#dccfb7; --tex:var(--tex-travertine); --fg:20 25 18; --shade:transparent">
+        <div class="mat-tex"></div><div class="mat-shade"></div>
+        <h3 class="mat-title-v display">Linho</h3>
+        <div class="mat-body">
+          <h3 class="display text-3xl">Linho</h3>
+          <p class="mt-3 text-[.95rem] leading-relaxed opacity-85"></p>
+        </div>
+      </article>
+
+      <article class="mat" tabindex="0" style="--base:#a5602f; --tex:var(--tex-leather); --fg:243 238 228; --shade:rgb(20 25 18 / .5)">
+        <div class="mat-tex"></div><div class="mat-shade"></div>
+        <h3 class="mat-title-v display">MDF laqueado</h3>
+        <div class="mat-body">
+          <h3 class="display text-3xl">MDF laqueado</h3>
+          <p class="mt-3 text-[.95rem] leading-relaxed opacity-90"></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANÉIS DA ÁRVORE ============ -->
+<section id="historia" class="hist" aria-labelledby="historia-t">
+  <div class="hist-stick">
+    <div class="wrap grid w-full items-center gap-6 md:grid-cols-2 md:gap-16">
+      <div class="flex justify-center">
+        <svg id="histSvg" viewBox="0 0 600 600" class="w-[min(100%,44svh)] md:w-[min(100%,72svh)]" role="img" aria-label="Anéis de crescimento de um tronco: um anel para cada ano desde 1982">
+          <line class="ring-tick" x1="300" y1="300" x2="300" y2="20"></line>
+          <g id="histRings"></g>
+          <g id="histLabels"></g>
+        </svg>
+      </div>
+        <!-- ============ anos ============ -->
+      <div>
+        <div class="flex items-baseline gap-4">
+          <span id="yearNow" class="display text-[clamp(3.6rem,9vw,8rem)] leading-none" style="font-variant-numeric:tabular-nums">1982</span>
+        </div>
+        <p id="yearsCount" class="mt-2 text-sm text-forest-800/65" aria-live="off">0 anos de ofício</p>
+        <h2 id="historia-t"
+    class="display mt-6 text-[clamp(1.8rem,3.4vw,3.2rem)] max-w-[22ch] md:mt-10"
+    style="color: rgb(var(--forest-800) / .85);">
+  Anéis da árvore
+</h2>
+        <p class="body-copy mt-5" style="color: rgb(var(--forest-800));">
+  Uma árvore leva décadas para chegar ao ponto. A marcenaria também: desde 1982, cada projeto acrescenta uma camada de ofício ao que veio antes.
+</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="bg-forest-900 pb-10 pt-20">
+  <div class="wrap grid gap-12 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-4">
+        <img data-img="logo" alt="" width="72" height="72" class="h-[72px] w-[72px] rounded-full">
+        <span class="wordmark">Marcenaria Eise</span>
+      </div>
+      <p class="display mt-6 max-w-[20ch] text-2xl text-ivory/85">Desde 1982 fabricando sonhos sob medida.</p>
+    </div>
+    <div class="text-sm leading-relaxed text-ivory/70 md:col-span-3 md:col-start-7">
+      <p class="mb-3 text-ivory">Contato</p>
+      <p class="mb-3 text-ivory">Atendimento em todo São Paulo.</p>
+
+      <a data-wa href="#" target="_blank" rel="noopener" class="block hover:text-ivory"> 
+        WhatsApp (11) 94769-0687</a>
+    
+      <p></p>
+      <a data-ig href="#" target="_blank" rel="noopener" class="block hover:text-ivory">Instagram @marcenaria.eise
+        
+      </a>
+    </div>
+    
+  </div>
+  <div class="wrap mt-16 flex flex-wrap justify-between gap-2 border-t border-sand/15 pt-6 text-xs text-ivory/45">
+    <p><span id="yr">2026, </span> Marcenaria Eise</p>
+   
+  </div>
+</footer>
+
+<!-- ============ BOTÃO FLUTUANTE DO WHATSAPP ============ -->
+<div class="fab-stack">
+  <a data-ig href="#" target="_blank" rel="noopener" class="fab" aria-label="Ver no Instagram" title="Instagram">
+    <svg class="h-6 w-6" aria-hidden="true"><use href="#i-ig"/></svg>
+  </a>
+  <a data-wa href="#" target="_blank" rel="noopener" class="fab" aria-label="Conversar no WhatsApp" title="WhatsApp">
+    <svg class="h-7 w-7" aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lb" class="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle" aria-hidden="true" inert>
+  <div class="lb-inner">
+    <img id="lbImg" class="lb-img" alt="">
+    <div>
+      <p id="lbCat" class="text-sm text-ivory/55"></p>
+      <h3 id="lbTitle" class="display mt-2 text-3xl"></h3>
+      <p id="lbDesc" class="body-copy mt-4"></p>
+      <div class="mt-8 flex gap-2">
+        <button id="lbPrev" type="button" class="lb-btn" aria-label="Projeto anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button id="lbNext" type="button" class="lb-btn" aria-label="Próximo projeto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button id="lbClose" type="button" class="lb-btn lb-close" aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>
