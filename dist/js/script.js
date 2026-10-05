@@ -274,9 +274,9 @@
 
       hint.dataset.projectHint = '';
       hint.className =
-  '-mt-1 text-sm leading-none tracking-[0.08em] text-ivory/45 italic font-semibold';
+        'mt-2 text-xs md:text-sm leading-tight tracking-[0.05em] text-ivory/45 italic font-semibold text-center';
 
-hint.textContent = 'Toque para ampliar a foto';
+      hint.textContent = 'Toque para ampliar a foto';
 
       card.querySelector('.p-open').appendChild(hint);
     }
